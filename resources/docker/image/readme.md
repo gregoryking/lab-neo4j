@@ -5,7 +5,7 @@ pip install jupyter-repo2docker
 docker login
 
 GIT_PREFIX=https://github.com
-GIT_USER=thedatasociety
+GIT_USER=gregoryking
 GIT_REPO=lab-template
 
 jupyter-repo2docker \

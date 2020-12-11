@@ -29,14 +29,18 @@ A repository for launching laboratories.
 
 <!-- MarkdownTOC autolink=true -->
 
-- [Launching this laboratory on a binderhub instance](#launching-this-laboratory-on-a-binderhub-instance)
-  - [JupyterLab](#jupyterlab)
-- [Launch this laboratory locally using Docker](#launch-this-laboratory-locally-using-docker)
-  - [Via our Docker image](#via-our-docker-image)
-  - [Via repo2docker](#via-repo2docker)
-  - [Accessing your Docker container](#accessing-your-docker-container)
-- [Contributing](#contributing)
-- [License](#license)
+- [lab-neo4j](#lab-neo4j)
+  - [Table of contents](#table-of-contents)
+    - [Launching this laboratory on a binderhub instance](#launching-this-laboratory-on-a-binderhub-instance)
+      - [JupyterLab](#jupyterlab)
+      - [Jupyter](#jupyter)
+      - [VSCode](#vscode)
+    - [Launch this laboratory locally using Docker](#launch-this-laboratory-locally-using-docker)
+      - [Via our Docker image](#via-our-docker-image)
+      - [Via repo2docker](#via-repo2docker)
+      - [Accessing your Docker container](#accessing-your-docker-container)
+  - [Contributing](#contributing)
+  - [License](#license)
 
 <!-- /MarkdownTOC -->
 
@@ -63,42 +67,42 @@ The list below provides the badges and the hyperlinks for launching one of the s
 
 #### JupyterLab 
   
-  - [![launch @ gke.mybinder.org][badge-jupyterlab-gke-mybinder-org]](https://gke.mybinder.org/v2/gh/thedatasociety/lab-neo4j/master?urlpath=lab)
+  - [![launch @ gke.mybinder.org][badge-jupyterlab-gke-mybinder-org]](https://gke.mybinder.org/v2/gh/gregoryking/lab-neo4j/master?urlpath=lab)
 
-  - [![launch @ ovh.mybinder.org][badge-jupyterlab-ovh-mybinder-org]](https://ovh.mybinder.org/v2/gh/thedatasociety/lab-neo4j/master?urlpath=lab)
+  - [![launch @ ovh.mybinder.org][badge-jupyterlab-ovh-mybinder-org]](https://ovh.mybinder.org/v2/gh/gregoryking/lab-neo4j/master?urlpath=lab)
 
-  - [![launch @ turing.mybinder.org][badge-jupyterlab-turing-mybinder-org]](https://turing.mybinder.org/v2/gh/thedatasociety/lab-neo4j/master?urlpath=lab)
+  - [![launch @ turing.mybinder.org][badge-jupyterlab-turing-mybinder-org]](https://turing.mybinder.org/v2/gh/gregoryking/lab-neo4j/master?urlpath=lab)
 
-  - [![launch @ gesis.org][badge-jupyterlab-gesis-org]](https://notebooks.gesis.org/binder/v2/gh/thedatasociety/lab-neo4j/master?urlpath=lab)
+  - [![launch @ gesis.org][badge-jupyterlab-gesis-org]](https://notebooks.gesis.org/binder/v2/gh/gregoryking/lab-neo4j/master?urlpath=lab)
 
-  - [![launch @ pangeo.io][badge-jupyterlab-pangeo-io]](https://binder.pangeo.io/v2/gh/thedatasociety/lab-neo4j/master?urlpath=lab)
+  - [![launch @ pangeo.io][badge-jupyterlab-pangeo-io]](https://binder.pangeo.io/v2/gh/gregoryking/lab-neo4j/master?urlpath=lab)
 
 
 #### Jupyter 
   
-  - [![launch @ gke.mybinder.org][badge-jupyter-gke-mybinder-org]](https://gke.mybinder.org/v2/gh/thedatasociety/lab-neo4j/master?urlpath=tree)
+  - [![launch @ gke.mybinder.org][badge-jupyter-gke-mybinder-org]](https://gke.mybinder.org/v2/gh/gregoryking/lab-neo4j/master?urlpath=tree)
 
-  - [![launch @ ovh.mybinder.org][badge-jupyter-ovh-mybinder-org]](https://ovh.mybinder.org/v2/gh/thedatasociety/lab-neo4j/master?urlpath=tree)
+  - [![launch @ ovh.mybinder.org][badge-jupyter-ovh-mybinder-org]](https://ovh.mybinder.org/v2/gh/gregoryking/lab-neo4j/master?urlpath=tree)
 
-  - [![launch @ turing.mybinder.org][badge-jupyter-turing-mybinder-org]](https://turing.mybinder.org/v2/gh/thedatasociety/lab-neo4j/master?urlpath=tree)
+  - [![launch @ turing.mybinder.org][badge-jupyter-turing-mybinder-org]](https://turing.mybinder.org/v2/gh/gregoryking/lab-neo4j/master?urlpath=tree)
 
-  - [![launch @ gesis.org][badge-jupyter-gesis-org]](https://notebooks.gesis.org/binder/v2/gh/thedatasociety/lab-neo4j/master?urlpath=tree)
+  - [![launch @ gesis.org][badge-jupyter-gesis-org]](https://notebooks.gesis.org/binder/v2/gh/gregoryking/lab-neo4j/master?urlpath=tree)
 
-  - [![launch @ pangeo.org][badge-jupyter-pangeo-io]](https://binder.pangeo.io/v2/gh/thedatasociety/lab-neo4j/master?urlpath=tree)
+  - [![launch @ pangeo.org][badge-jupyter-pangeo-io]](https://binder.pangeo.io/v2/gh/gregoryking/lab-neo4j/master?urlpath=tree)
 
 
       
 #### VSCode 
   
-  - [![launch @ gke.mybinder.org][badge-vscode-gke-mybinder-org]](https://gke.mybinder.org/v2/gh/thedatasociety/lab-neo4j/master?urlpath=vscode/)
+  - [![launch @ gke.mybinder.org][badge-vscode-gke-mybinder-org]](https://gke.mybinder.org/v2/gh/gregoryking/lab-neo4j/master?urlpath=vscode/)
 
-  - [![launch @ ovh.mybinder.org][badge-vscode-ovh-mybinder-org]](https://ovh.mybinder.org/v2/gh/thedatasociety/lab-neo4j/master?urlpath=vscode/)
+  - [![launch @ ovh.mybinder.org][badge-vscode-ovh-mybinder-org]](https://ovh.mybinder.org/v2/gh/gregoryking/lab-neo4j/master?urlpath=vscode/)
 
-  - [![launch @ turing.mybinder.org][badge-vscode-turing-mybinder-org]](https://turing.mybinder.org/v2/gh/thedatasociety/lab-neo4j/master?urlpath=vscode/)
+  - [![launch @ turing.mybinder.org][badge-vscode-turing-mybinder-org]](https://turing.mybinder.org/v2/gh/gregoryking/lab-neo4j/master?urlpath=vscode/)
 
-  - [![launch @ gesis.org][badge-vscode-gesis-org]](https://notebooks.gesis.org/binder/v2/gh/thedatasociety/lab-neo4j/master?urlpath=vscode/)
+  - [![launch @ gesis.org][badge-vscode-gesis-org]](https://notebooks.gesis.org/binder/v2/gh/gregoryking/lab-neo4j/master?urlpath=vscode/)
 
-  - [![launch @ pangeo.io][badge-vscode-pangeo-io]](https://binder.pangeo.io/v2/gh/thedatasociety/lab-neo4j/master?urlpath=vscode/)
+  - [![launch @ pangeo.io][badge-vscode-pangeo-io]](https://binder.pangeo.io/v2/gh/gregoryking/lab-neo4j/master?urlpath=vscode/)
 
 
 
