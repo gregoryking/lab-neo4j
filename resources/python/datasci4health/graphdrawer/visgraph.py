@@ -74,69 +74,99 @@ def vis_network(nodes, edges, physics=True):
 
     return IFrame(filename, width="100%", height="400")
 
-def draw(graph, options, physics=False, limit=100):
+# def draw(graph, options, physics=False, limit=100):
+#     # The options argument should be a dictionary of node labels and property keys; it determines which property
+#     # is displayed for the node label. For example, in the movie graph, options = {"Movie": "title", "Person": "name"}.
+#     # Omitting a node label from the options dict will leave the node unlabeled in the visualization.
+#     # Setting physics = True makes the nodes bounce around when you touch them!
+#     query = """
+#     MATCH (n)
+#     WITH n, rand() AS random
+#     ORDER BY random
+#     LIMIT {limit}
+#     OPTIONAL MATCH (n)-[r]->(m)
+#     RETURN n AS source_node,
+#            id(n) AS source_id,
+#            r,
+#            m AS target_node,
+#            id(m) AS target_id
+#     """
+
+#     data = graph.run(query, limit=limit)
+
+#     nodes = []
+#     edges = []
+
+#     def get_vis_info(node, id):
+#         node_label = list(node.labels)[0]
+#         prop_key = options.get(node_label)
+#         vis_label = node['label']
+        
+#         if node['label'] == None:
+
+#             return {
+#                     "id": id, 
+#                     "label": "\n{}".format(node.labels), 
+#                     "group": node_label, "title": "Type(s) = {} <br/> Properties = ".format(node_label)+repr(dict(node))
+#                    }
+#         else:
+
+#             return {
+#                     "id": id, 
+#                     "label": "\n\n{} ({})".format(node.labels,node['label']), 
+#                     "group": node_label, "title": "Type(s) = {} <br/> Properties = ".format(node_label)+repr(dict(node))
+#                    }
+
+    
+#     for row in data:
+#         source_node = row[0]
+#         source_id = row[1]
+#         rel = row[2]
+#         target_node = row[3]
+#         target_id = row[4]
+
+#         source_info = get_vis_info(source_node, source_id)
+
+#         if source_info not in nodes:
+#             nodes.append(source_info)
+
+#         if rel is not None:
+#             target_info = get_vis_info(target_node, target_id)
+
+#             if target_info not in nodes:
+#                 nodes.append(target_info)
+
+#             edges.append({"from": source_info["id"], "to": target_info["id"], "label": "{}".format(type(rel).__name__)})
+
+#     return vis_network(nodes, edges, physics=physics)
+
+def draw(result, options, physics=False, limit=100):
     # The options argument should be a dictionary of node labels and property keys; it determines which property
     # is displayed for the node label. For example, in the movie graph, options = {"Movie": "title", "Person": "name"}.
     # Omitting a node label from the options dict will leave the node unlabeled in the visualization.
     # Setting physics = True makes the nodes bounce around when you touch them!
-    query = """
-    MATCH (n)
-    WITH n, rand() AS random
-    ORDER BY random
-    LIMIT {limit}
-    OPTIONAL MATCH (n)-[r]->(m)
-    RETURN n AS source_node,
-           id(n) AS source_id,
-           r,
-           m AS target_node,
-           id(m) AS target_id
-    """
 
-    data = graph.run(query, limit=limit)
+    sub_graph = result.get_graph()
+    nx_nodes = sub_graph.nodes
+    nx_edges = sub_graph.edges
 
-    nodes = []
-    edges = []
-
-    def get_vis_info(node, id):
-        node_label = list(node.labels)[0]
-        prop_key = options.get(node_label)
-        vis_label = node['label']
-        
-        if node['label'] == None:
-
+    def node_format(id):
+        if nx_nodes[id]['labels'] == None:
             return {
                     "id": id, 
-                    "label": "\n{}".format(node.labels), 
-                    "group": node_label, "title": "Type(s) = {} <br/> Properties = ".format(node_label)+repr(dict(node))
+                    "label": "None"
                    }
         else:
-
             return {
                     "id": id, 
-                    "label": "\n\n{} ({})".format(node.labels,node['label']), 
-                    "group": node_label, "title": "Type(s) = {} <br/> Properties = ".format(node_label)+repr(dict(node))
+                    "label": "\n{}".format(nx_nodes[id]['labels'])
                    }
-
+        
+    def edge_format(edge):
+        return {"from": edge[0], "to": edge[1], "label": edge[2]}
     
-    for row in data:
-        source_node = row[0]
-        source_id = row[1]
-        rel = row[2]
-        target_node = row[3]
-        target_id = row[4]
-
-        source_info = get_vis_info(source_node, source_id)
-
-        if source_info not in nodes:
-            nodes.append(source_info)
-
-        if rel is not None:
-            target_info = get_vis_info(target_node, target_id)
-
-            if target_info not in nodes:
-                nodes.append(target_info)
-
-            edges.append({"from": source_info["id"], "to": target_info["id"], "label": "{}".format(type(rel).__name__)})
+    nodes = list(map(node_format, nx_nodes))
+    edges = list(map(edge_format, nx_edges))
 
     return vis_network(nodes, edges, physics=physics)
 
